@@ -1,17 +1,20 @@
 var apiKey = require('./../.env').apiKey;
 
-function Weather(){
+function Temperature(){
 }
 
-Weather.prototype.getWeather = function(city, displayHumidity, displayTempK) {
+Temperature.prototype.getTemps = function(city, displayTemp) {
   $.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
   .then(function(response) {
-    displayHumidity(city, response.main.humidity);
-    displayTempK(city, response.main.temp);
+    degreesF = response.main.temp*(9/5) - (460);
+    degreesC = response.main.temp-273;
+    displayTemp(degreesF, degreesC);
   })
   .fail(function(error) {
     $('.showWeather').text(error.responseJSON.message);
   });
 };
 
-exports.weatherModule = Weather;
+
+
+exports.tempModule = Temperature;
