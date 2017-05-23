@@ -5,7 +5,7 @@ var displayHumidity = function(city, humidityData) {
 };
 
 var displayTempK = function(city, temperatureData) {
-  $('.showWeather').append(`The temperature in ${city} is ${temperatureData} \u00B0 K`);
+  $('.showWeather').append(`The temperature in ${city} is ${temperatureData} K`);
 };
 
 $(document).ready(function() {
